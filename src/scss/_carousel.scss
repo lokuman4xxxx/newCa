@@ -1,50 +1,19 @@
-
-.carousel__box {
-
-	img {
-		max-width: 80%;
-	}
+.carousel__view--box {
+	overflow: hidden;
 }
 
 .carousel__view {
-	position: absolute;
-	width: 630px; // test prop, use js 
-	overflow: hidden;
-
-	 > .item {
-		position: absolute;
-		top: 0;
-		left: 0;
-		transition: .6s all linear;
+	> .item {
+		float: left;
 
 		> img {
-			max-width: 60%;
+			width: 100%;
 		}
 	}
 }
 
-.animate--on {
-	transform: translateX(20%);
-	z-index: 20;
-}
-
-.animate--prev {
-	transform: translateX(-40%);
-	z-index: 10;
-}
-
-.animate--next {
-	transform: translateX(80%);
-	z-index: 10;	
-}
-
-.animate--none {
-	transform: translateX(-400%);
-}
-
 .carousel__control {
 	position: absolute;
-	z-index: 30;
 	display: block;
 	top: 50%;
 	transform: translateY(-50%);
@@ -54,6 +23,6 @@
 	}
 	
 	&.right {
-	right: -15px;
+	right: 15px;
 	}
 }
