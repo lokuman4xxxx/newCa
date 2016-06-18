@@ -8,51 +8,166 @@
 	<title>Project</title>
 	<meta name="description" content="">
 	<meta name="keywords" content="">
-	<link href="dist/css/all.min.css" rel="stylesheet">
 	<link href="lib/css/bootstrap.min.css" rel="stylesheet">
+	<link href="dist/css/all.min.css" rel="stylesheet">
 </head>
 
 <body>
-	<!-- Button trigger modal -->
-	<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">login</button>
-	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-		<div class="modal-dialog" role="document">
-			<form class="col-lg-6 form-signin">
-				<h4 class="form-signin-heading">CREATE A NEW ACCOUNT</h4>
-				<label for="inputEmail" class="sr-only">User name</label>
-				<input type="name" id="inputName" class="form-control" placeholder="Username" required autofocus="" autocomplete="off">
-				<label for="inputEmail" class="sr-only">Email address</label>
-				<input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus="" autocomplete="off">
-				<label for="inputPassword" class="sr-only">Password</label>
-				<input type="password" id="inputPassword" class="form-control" placeholder="Password" required autocomplete="off">
-				<label for="inputPassword" class="sr-only">Confirm Password</label>
-				<input type="password" id="inputConfirmPassword" class="form-control" placeholder="Confirm password" required autocomplete="off">
-				<div class="checkbox">
-					<label>
-            <input type="checkbox" value="remember-me"> Remember me
-          </label>
+	<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#loginModal">login</button>
+	<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog login-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header login-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
 				</div>
-				<button class="btn btn-lg btn-primary btn-block" type="submit">SIGN UP</button>
-			</form>
-			<form class="col-lg-6 form-signin">
-				<h4 class="form-signin-heading">LOG IN</h4>
-				<label for="inputEmail" class="sr-only">Email address</label>
-				<input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus="" autocomplete="off">
-				<label for="inputPassword" class="sr-only">Password</label>
-				<input type="password" id="inputPassword" class="form-control" placeholder="Password" required autocomplete="off">
-				<div class="checkbox">
-					<label>
-            <input type="checkbox" value="remember-me"> Remember me
-          </label>
+				<div class="modal-body login-body">
+					<div class="login-container clearfix">
+						<div class="col-lg-12 account-content">
+							<form id="regForm" class="col-lg-6 account-left" method="POST" role="form">
+								<h4 class="input-group-title">New user? Sign up here!</h4>
+								<div class="form-group kiwi-input-group">
+									<input required id="regName" type="text" name="name" value="" class="form-control" placeholder="Name" aria-describedby="basic-addon2">
+								</div>
+								<div class="form-group kiwi-input-group">
+									<input required id="regEmail" type="email" name="email" value="" class="form-control" placeholder="Email" aria-describedby="basic-addon2">
+								</div>
+								<div class="form-group kiwi-input-group">
+									<input required id="regPassword" type="password" name="password" class="form-control" placeholder="Password" aria-describedby="basic-addon2">
+								</div>
+								<div class="form-group kiwi-input-group">
+									<input required id="regPasswordConfirm" type="password" name="password_confirmation" class="form-control" placeholder="Confirm Password"
+										aria-describedby="basic-addon2">
+								</div>
+								<div class="form-group kiwi-input-group">
+									<input type="checkbox" name="terms" required><a href="">&nbsp;I agree the terms and conditions</a>
+								</div>
+								<button type="submit" class="btn btn-primary btn-block account-signup">CREATE ACCOUNT</button>
+							</form>
+							<form id="loginForm" class="col-lg-6 account-right" method="POST" role="form">
+								<h4 class="input-group-title">Already a user? Login here!</h4>
+								<div class="form-group kiwi-input-group">
+									<input required id="logEmail" type="email" name="email" class="form-control" placeholder="Email address" aria-describedby="basic-addon2">
+								</div>
+								<div class="form-group kiwi-input-group">
+									<input required id="logPassword" type="password" name="password" class="form-control" placeholder="Password" aria-describedby="basic-addon2">
+								</div>
+								<button type="submit" class="btn btn-primary btn-block account-login">LOGIN</button>
+							</form>
+						</div>
+					</div>
 				</div>
-				<button class="btn btn-lg btn-primary btn-block" type="submit">LOG IN</button>
-			</form>
+			</div>
 		</div>
 	</div>
-	<script src="lib/js/jquery-1.12.4.min.js"></script>
-	<script src="lib/js/bootstrap.min.js"></script>
-	<script src="lib/js/vue.js"></script>
-	<script src="dist/js/all.min.js"></script>
+
+	<div class="dropdown cate-item">
+		<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+			aria-expanded="true">
+	Dropdown
+	<span class="caret"></span>
+  </button>
+		<ul class="dropdown-menu" role="menu">
+			<li data-submenu-id="submenu-patas">
+				<a href="#">Electronics</a>
+				<div id="submenu-patas" class="popover">
+					<ul class="popover-title 2">
+						<li><a href="">1</a></li>
+						<li><a href="">2</a></li>
+						<li><a href="">3</a></li>
+						<li><a href="">4</a></li>
+						<li><a href="">5</a></li>
+						<li><a href="">6</a></li>
+						<li><a href="">7</a></li>
+						<li><a href="">8</a></li>
+						<li><a href="">9</a></li>
+						<li><a href="">10</a></li>
+					</ul>
+					<div class="popover-content 3-4">
+						<ul class="">
+							<li>
+								<a href="">1</a>
+								<a href="">2</a>
+								<a href="">3</a>
+								<a href="">4</a>
+								<a href="">5</a>
+								<a href="">6</a>
+								<a href="">7</a>
+								<a href="">8</a>
+								<a href="">9</a>
+								<a href="">10</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</li>
+			<li data-submenu-id="submenu-snub-nosed">
+				<a href="#">Clothing</a>
+				<div id="submenu-snub-nosed" class="popover">
+					<h3 class="popover-title">Golden Snub-Nosed</h3>
+					<div class="popover-content"><img src="img/snub-nosed.png"></div>
+				</div>
+			</li>
+			<li data-submenu-id="submenu-duoc-langur">
+				<a href="#">Jewellery</a>
+				<div id="submenu-duoc-langur" class="popover">
+					<h3 class="popover-title">Duoc Langur</h3>
+					<div class="popover-content"><img src="img/duoc-langur.png"></div>
+				</div>
+			</li>
+			<li data-submenu-id="submenu-pygmy">
+				<a href="#">Body & Makeup</a>
+				<div id="submenu-pygmy" class="popover">
+					<h3 class="popover-title">Baby Pygmy Marmoset</h3>
+					<div class="popover-content"><img src="img/pygmy.png"></div>
+				</div>
+			</li>
+			<li data-submenu-id="submenu-tamarin">
+				<a href="#">Food</a>
+				<div id="submenu-tamarin" class="popover">
+					<h3 class="popover-title">Black Lion Tamarin</h3>
+					<div class="popover-content"><img src="img/tamarin.png"></div>
+				</div>
+			</li>
+			<li data-submenu-id="submenu-monk">
+				<a href="#">Furniture & Home</a>
+				<div id="submenu-monk" class="popover">
+					<h3 class="popover-title">Monk Saki</h3>
+					<div class="popover-content"><img src="img/monk.png"></div>
+				</div>
+			</li>
+			<li data-submenu-id="submenu-gabon">
+				<a href="#">Automotive</a>
+				<div id="submenu-gabon" class="popover">
+					<h3 class="popover-title">Gabon</h3>
+					<div class="popover-content"><img src="img/gabon.png"></div>
+				</div>
+			</li>
+			<li data-submenu-id="submenu-grivet">
+				<a href="#">Pet & Supplies</a>
+				<div id="submenu-grivet" class="popover">
+					<h3 class="popover-title">Grivet</h3>
+					<div class="popover-content"><img src="img/grivet.png"></div>
+				</div>
+			</li>
+			<li data-submenu-id="submenu-red-leaf">
+				<a href="#">Stationery</a>
+				<div id="submenu-red-leaf" class="popover">
+					<h3 class="popover-title">Red Leaf</h3>
+					<div class="popover-content"><img src="img/red-leaf.png"></div>
+				</div>
+			</li>
+			<li data-submenu-id="submenu-king-colobus">
+				<a href="#">Baby & Toys</a>
+				<div id="submenu-king-colobus" class="popover">
+					<h3 class="popover-title">King Colobus</h3>
+					<div class="popover-content"><img src="img/colobus.png"></div>
+				</div>
+			</li>
+		</ul>
+
+		<script src="lib/js/jquery-1.12.4.min.js"></script>
+		<script src="lib/js/bootstrap.min.js"></script>
+		<script src="dist/js/all.min.js"></script>
 </body>
 
 </html>

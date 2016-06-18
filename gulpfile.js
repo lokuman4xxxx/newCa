@@ -83,8 +83,8 @@ gulp.task('image', function() {
 // 检查js脚本的任务
 gulp.task('js', function() {
     return gulp.src(jsSrc) //可配置你需要检查脚本的具体名字。
-        .pipe(jshint())
-        .pipe(jshint.reporter('default'))
+        // .pipe(jshint())
+        // .pipe(jshint.reporter('default'))
         .pipe(concat('all.js'))
         .pipe(rename({
             suffix: ".min"
@@ -117,7 +117,7 @@ gulp.task('browser-sync', ['sass'], function() {
 
 // Clean
 gulp.task('clean', function(cb) {
-    del(["dist/img/*", "dist/css/*.css", "dist/js/*.js", "./*.html"], cb)
+    del([cssDest, jsDest, imgDest, "dist/*.html"], cb)
 });
 
 // 定义默认任务,执行gulp会自动执行的任务
