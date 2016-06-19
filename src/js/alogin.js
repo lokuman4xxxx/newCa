@@ -36,9 +36,6 @@ $('#userReg').click(function () {
 					$("#error_regmsg").text('Sorry, we cannot create an account using that email address. Please try another email address.').show();
 				}
 				if (msg.success === 1) {
-					$("#error_regmsg").hide();
-					$btn.button('reset');
-
 					window.location.reload();
 				}
 			},
@@ -67,9 +64,6 @@ $('#userLog').click(function () {
 			}
 			//succeed
 			if (msg.success === 1) {
-				$("#error_logmsg").hide();
-				$btn.button('reset');
-				$(".modal.fade").removeClass("in");
 				window.location.reload();
 			}
 		}
