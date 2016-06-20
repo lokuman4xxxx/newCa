@@ -3,6 +3,22 @@
  * @authors Your Name (you@example.org)
  * @date    2016-04-22 09:56:03
  * @version $Id$
+ * 
+ 打开 node_modules\gulp-rev\index.js
+
+第133行 manifest[originalFile] = revisionedFile; 
+更新为: manifest[originalFile] = originalFile + '?v=' + file.revHash;
+
+打开 nodemodules\gulp-rev\nodemodules\rev-path\index.js
+
+10行 return filename + '-' + hash + ext; 
+更新为: return filename + ext;
+
+打开 node_modules\gulp-rev-collector\index.js
+
+31行 if ( path.basename(json[key]).replace(new RegExp( opts.revSuffix ), '' ) !== path.basename(key) ) { 
+更新为: if ( path.basename(json[key]).split('?')[0] !== path.basename(key) ) {
+  
  */
 
 // 引入gulp
@@ -117,7 +133,7 @@ gulp.task('browser-sync', ['sass'], function() {
 
 // Clean
 gulp.task('clean', function(cb) {
-    del([cssDest, jsDest, imgDest, "dist/*.html"], cb)
+    del([cssDest, jsDest, imgDest, "*.html"], cb)
 });
 
 // 定义默认任务,执行gulp会自动执行的任务
