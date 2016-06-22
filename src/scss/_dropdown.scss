@@ -3,66 +3,78 @@ $dropdown-link-color-hover: #699a33;
 
 .popover {
 	padding: 0 0 1px 0;
+	background-color: #ebebeb;
 }
 
 .popover-title {
-	padding: 8px 8px;
-	float: left;
-	list-style: none;
+	background-color: #fff;
+	padding: 10px 0 10px 15px;
 
-	li {
-		padding: 10px 0 3px;
+	dt {
+		h3 {
+			margin-top: 10px;
+			margin-left: 10px;
+		}
+	}
+
+	dd {
+		float: left;
+		width: 20%;
 		text-align: center;
-		white-space: nowrap;
 
-		a {	
+		a {
+			display: inline-block;
 			color: $dropdown-link-color;
-			font-weight: 700;
 
 			&:hover {
 				color: $dropdown-link-color-hover;
+				text-decoration: none;
+			}
+
+			img {
+				display: block;
+				margin:0 auto;
+				width: 100px;
+				height: 100px;
 			}
 		}
 	}
 }
 .popover {
+	min-width: 640px;
 	max-width: 100%;
-	min-width: 1170px;
 }
 .popover-content{
-	float: left;
-	dl {
+		background-color: #fff;
 		box-sizing: border-box;
-		padding: 0 0 0 20px;
-		margin: 0 0 10px 0;
+		padding: 10px 10px 17px;
+		margin-bottom: 0px;
+		border-bottom-left-radius: 6px;
+		border-bottom-right-radius: 6px;
+
 
 		dt {
-			float: left;
 			font-weight: 400;
-			margin: 0 10px 4px 0;
 
-			a {
-				color: $dropdown-link-color;
+			h3 {
+				margin-top: 10px;
+				margin-left: 15px;
+			}
 
-			&:hover {
-				color: $dropdown-link-color-hover;
-			}
-			}
 		}
 
 		dd {
 			float: left;
-			font-size: 12px;
+			width: 50%;
 			font-weight: 100;
-			margin: 0 8px 4px 0;
+			padding: 8px 15px;
 
 			a {
 				color: $dropdown-link-color;
 
-			&:hover {
-				color: $dropdown-link-color-hover;
-			}
+				&:hover {
+					color: $dropdown-link-color-hover;
+				}
 			}
 		}
-	}
 }
