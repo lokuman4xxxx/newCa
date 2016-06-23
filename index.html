@@ -465,7 +465,7 @@
 		<input id="input-write" type="text" class="rating" data-min="0" data-max="5" data-show-clear="false">
 		<input data-star-id="input-read" type="text" class="rating" value="4.3" data-min="0" data-max="5" data-step="0.1" data-readonly="true"
 			data-show-clear="false">
-		<div>
+		<div class="container">
 			<div class="col-lg-4 match-result-left">
 				<ul class="nav nav-tabs" role="tablist">
 					<li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Match Result</a></li>
@@ -476,18 +476,15 @@
 						<p class="select-prompt">Please select two retailers to price march</p>
 						<div class="matched-info display-none">
 							<p class="matched-price"><span>Matched Prices:</span>
-								<br><b data-price-id="matched-price"></b>
-								<br><span id="high-retailer">from</span></p>
-							<div class="result-prod-container col-lg-12">
+								<br><b id="matched-price"></b>
+								<br><span>from<a id="high-retailer-link" href=""><img id="high-retailer-img" src="" alt=""></a></span></p>
+							<div class="result-prod-container clearfix">
 								<div class="col-lg-7 result-prod-left">
-									<a class="result-prod-img"><img class="" src="http://placehold.it/165x100"></a>
+									<a class="result-prod-img"><img src="http://placehold.it/165x100"></a>
 								</div>
 								<div class="col-lg-5 result-prod-right">Lenovo IdeaPad 15.6" Laptop - Black (Intel Core i3-5020U/500GB HDD/8GB RAM/Windows 10) - EnglishLenovo IdeaPad 15.6"
 									Laptop - Black (Intel Core i3-5020U/500GB HDD/8GB RAM/Windows 10) - English</div>
 							</div>
-							<div class="prod-price-in">Product price is <b data-price-id="product-price"></b> at
-							</div>
-
 							<div class="print-prompt">
 								<p>You can print this receipt to get the best matched price in the store.</p>
 								<button class="btn result-print">PRINT HERE</button>
@@ -508,9 +505,12 @@
 					</thead>
 					<tbody>
 						<tr class="price-match">
-							<td>
-								<a href=""><img src="http://placehold.it/110x46" alt="retailer1"></a>
-							</td>
+							<td><a href="#"><img src="http://placehold.it/110x46" alt="BestBuy"></a></td>
+							<td class="select-prod-price">$599.99</td>
+							<td class="select-prod-price select-to-price">Price Match <i class="fa fa-circle-thin"></i></td>
+						</tr>
+						<tr class="price-match">
+							<td><a href="#"><img src="http://placehold.it/110x46" alt="Staples"></a></td>
 							<td class="select-prod-price">$599.99</td>
 							<td class="select-prod-price select-to-price">Price Match <i class="fa fa-circle-thin"></i></td>
 						</tr>
@@ -518,11 +518,6 @@
 							<td><img src="http://placehold.it/110x46"></td>
 							<td class="select-prod-price">$599.99</td>
 							<td class="select-prod-price select-to-price">Price Match <i class="fa fa-circle-thin"></i></td>
-						</tr>
-						<tr class="price-match">
-							<td><img src="http://placehold.it/110x46"></td>
-							<td class="select-prod-price">$599.99</td>
-							<td class="select-prod-price select-to-price">Price Match <i class="fa fa-circle-thin"></i><input type="checkbox" name="retailer1" class="display-none"></td>
 						</tr>
 						<tr class="price-match">
 							<td><img src="http://placehold.it/110x46"></td>
@@ -575,42 +570,76 @@
 		<script src="dist/js/all.min.js?v=2c005d7252"></script>
 		<script>
 			// fa-check-circle
-			console.log($(".checked").length);
-			$(".select-to-price").click(function () {
-				var checkedNum = $(".checked").length;
-				if (checkedNum < 2) {
-					console.log(checkedNum);
-					$(this).css("cursor", "pointer")
-						.find("i")
-						.toggleClass("fa-circle-thin checked")
-						.toggleClass("fa-check-circle");
-					
-					var ele = $(this).parents(".price-match").find("td"),
-						eleImg = ele.eq(0).html(),
-						eleSeller = ele.eq(0).find("img").attr("alt"),
-						elePrice = ele.eq(1).text();
+			// $(document).ready(fucntion(){
+			// 	var retailerArr = [];
+			// });
 
-						$("b[data-price-id]").text(elePrice);
+			$(".select-to-price").click(function () {
+				$(this).toggleClass("checked");
+				var checkedNum = $(".checked").length;
+				console.log(checkedNum);
+				switch(checkedNum) {
+					case 0:
+						$(this).css("cursor", "pointer")
+								.find("i")
+								.toggleClass("fa-circle-thin")
+								.toggleClass("fa-check-circle");
+						$(".select-prompt").removeClass("display-none");
+						$(".matched-info").addClass("display-none");
+						$(".prod-price-in").remove();
+						break;
+					
+					case 1:
+						$(this).css("cursor", "pointer")
+							.find("i")
+							.toggleClass("fa-circle-thin")
+							.toggleClass("fa-check-circle");
+						var ele = $(this).parents(".price-match").find("td"),
+						eleLink = ele.eq(0).find("a").attr("href"),
+						eleImg = ele.eq(0).html(),
+						eleImgSrc = ele.eq(0).find("img").attr("src"),
+						eleRetailer = ele.eq(0).find("img").attr("alt"),
+						elePrice = ele.eq(1).text();
+						elepriceInfo = "<div data-retailer-name=\"" +eleRetailer+ "\" class=\"prod-price-in\">Product price is <b>" + elePrice + "</b> at" +eleImg+ "</div>";
+
+						$("#matched-price").text(elePrice);
+						$("#high-retailer-link").attr("href", eleLink);
+						$("#high-retailer-img").attr("src", eleImgSrc);
+
+						console.log($(".prod-price-in").data("retailer-name"));
+						console.log(eleRetailer);
+						if($(".prod-price-in").data("retailer-name") === eleRetailer){
+							$(".prod-price-in[data-retailer-name=" + eleRetailer + "]").remove();
+						} else {
+							$(elepriceInfo).insertBefore(".print-prompt");
+						}
+						
 						$(".select-prompt").addClass("display-none");
 						$(".matched-info").removeClass("display-none");
-						console.log(eleImg);
-						console.log(eleSeller);
-						console.log(elePrice);
+
 						console.log("jkl1");
 
-				} else if ($(this).find("i").hasClass("checked")) {
-					// 2个比的在这里写
-					console.log(checkedNum);
-					console.log("jkl2");
-					$(this).css("cursor", "pointer")
-						.find("i").
-						toggleClass("fa-check-circle checked").
-						toggleClass("fa-circle-thin");
-				} else {
-					$(this).css("cursor", "not-allowed");
-				}
+						break;
+					
+					case 2:
+						$(".select-to-price").css("cursor","not-allowed");
+						$(".select-to-price.checked").css("cursor", "pointer");
+						$(this).find("i")
+							.toggleClass("fa-circle-thin")
+							.toggleClass("fa-check-circle");
+
+						console.log("jkl2");
+						break;
+
+					default: 
+						$(".select-to-price").css("cursor","not-allowed");
+				} 
+				
+				
+
+				
 			});
-			
+
 		</script>
 </body>
 
