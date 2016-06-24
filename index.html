@@ -505,8 +505,8 @@
 					</thead>
 					<tbody>
 						<tr class="price-match">
-							<td><a href="#"><img src="http://placehold.it/110x46" alt="BestBuy"></a></td>
-							<td class="select-prod-price">$599.99</td>
+							<td><a href="#"><img src="http://placehold.it/111x46" alt="bestbuy"></a></td>
+							<td class="select-prod-price">$<span>599.99</span></td>
 							<td class="select-prod-price select-to-price">Price Match <i class="fa fa-circle-thin"></i></td>
 						</tr>
 						<tr class="price-match">
@@ -525,8 +525,8 @@
 							<td class="select-prod-price select-to-price">Price Match <i class="fa fa-circle-thin"></i></td>
 						</tr>
 						<tr class="price-match">
-							<td><img src="http://placehold.it/110x46"></td>
-							<td class="select-prod-price price-matched">$499.99</td>
+							<td><a href="#"><img src="http://placehold.it/110x46" alt="Lowest"></a></td>
+							<td class="select-prod-price price-matched">$<span>499.99</span></td>
 							<td class="select-prod-price select-to-price">Price Match <i class="fa fa-circle-thin"></i></td>
 						</tr>
 						<tr class="price-match">
@@ -577,9 +577,9 @@
 			$(".select-to-price").click(function () {
 				$(this).toggleClass("checked");
 				var checkedNum = $(".checked").length;
-				console.log(checkedNum);
 				switch(checkedNum) {
 					case 0:
+						$(".select-to-price").css("cursor", "pointer");
 						$(this).css("cursor", "pointer")
 								.find("i")
 								.toggleClass("fa-circle-thin")
@@ -590,6 +590,7 @@
 						break;
 					
 					case 1:
+						$(".select-to-price").css("cursor", "pointer");
 						$(this).css("cursor", "pointer")
 							.find("i")
 							.toggleClass("fa-circle-thin")
@@ -606,32 +607,123 @@
 						$("#high-retailer-link").attr("href", eleLink);
 						$("#high-retailer-img").attr("src", eleImgSrc);
 
-						console.log($(".prod-price-in").data("retailer-name"));
-						console.log(eleRetailer);
-						if($(".prod-price-in").data("retailer-name") === eleRetailer){
-							$(".prod-price-in[data-retailer-name=" + eleRetailer + "]").remove();
-						} else {
+
+						if ($(this).hasClass("checked")) {
 							$(elepriceInfo).insertBefore(".print-prompt");
+						} else {
+							var ele2 = $(".select-to-price.checked").parents(".price-match").find("td"),
+								ele2Link = ele2.eq(0).find("a").attr("href"),
+								ele2Img = ele2.eq(0).html(),
+								ele2ImgSrc = ele2.eq(0).find("img").attr("src"),
+								ele2Retailer = ele2.eq(0).find("img").attr("alt"),
+								ele2Price = ele2.eq(1).text();
+
+							$("#matched-price").text(ele2Price);
+							$("#high-retailer-link").attr("href", ele2Link);
+							$("#high-retailer-img").attr("src", ele2ImgSrc);
+							
+							for(var i=0; i<= 1; i++) {
+								var remove1 = ele.eq(0).find("img").attr("alt"),
+									remove2 = ele.eq(1).find("img").attr("alt");
+								if(eleRetailer == $(".prod-price-in").eq(i).data("retailer-name")) {
+									$(".prod-price-in[data-retailer-name=" + eleRetailer  + "]").remove();
+								}
+							}
 						}
-						
-						$(".select-prompt").addClass("display-none");
-						$(".matched-info").removeClass("display-none");
+							$(".select-prompt").addClass("display-none");
+							$(".matched-info").removeClass("display-none");
 
-						console.log("jkl1");
-
-						break;
+							break;
 					
 					case 2:
+						var ele = $(this).parents(".price-match").find("td"),
+						eleLink = ele.eq(0).find("a").attr("href"),
+						eleImg = ele.eq(0).html(),
+						eleImgSrc = ele.eq(0).find("img").attr("src"),
+						eleRetailer = ele.eq(0).find("img").attr("alt"),
+						elePrice = ele.eq(1).text();
+						elepriceInfo = "<div data-retailer-name=\"" +eleRetailer+ "\" class=\"prod-price-in\">Product price is <b>" + elePrice + "</b> at" +eleImg+ "</div>";
+						
+						// special
+						var matching = $(".select-to-price.checked").parents(".price-match"),
+							matchingPrice1 = parseFloat(matching.eq(0).find("td").eq(1).find("span").text()),
+							matchingPrice2 = parseFloat(matching.eq(1).find("td").eq(1).find("span").text()),
+							matchingImgSrc1 = matching.eq(0).find("td").eq(0).find("img").attr("src"),
+							matchingImgSrc2 = matching.eq(1).find("td").eq(0).find("img").attr("src"),
+							matchingLink1 = matching.eq(0).find("td").eq(0).find("a").attr("href"),
+							matchingLink2 = matching.eq(1).find("td").eq(0).find("a").attr("href"),
+							matchingRetailer1 = matching.eq(0).find("td").eq(0).find("img").attr("alt"),
+							matchingRetailer2 = matching.eq(1).find("td").eq(0).find("img").attr("alt");
+							if(matchingPrice1 > matchingPrice2) {
+
+								if(matchingRetailer1 == "bestbuy") {
+									console.log(matchingPrice1);
+									$("#matched-price").text("$"+(matchingPrice2 - (matchingPrice1 - matchingPrice2)*0.1).toFixed(2));
+								} else if (matchingRetailer1 == "homedepot") {
+									console.log("homedepot");
+									
+									$("#matched-price").text("$"+(matchingPrice2*0.9).toFixed(2));
+								} else if (matchingRetailer1 == "sears") {
+									console.log("sears");
+									$("#matched-price").text("$"+(matchingPrice2*0.9).toFixed(2));
+								} else if (matchingRetailer1 == "visions") {
+									console.log("visions");
+									$("#matched-price").text("$"+(matchingPrice2 - (matchingPrice1 - matchingPrice2)*0.15).toFixed(2));
+								} else {
+									$("#matched-price").text("$"+matchingPrice2);
+								}
+								
+								$("#high-retailer-link").attr("href", matchingLink1);
+								$("#high-retailer-img").attr("src", matchingImgSrc1);
+
+
+							} else if((matchingPrice1 < matchingPrice2)) {
+								console.log("2");
+
+								if(matchingRetailer2 == "bestbuy") {
+									console.log(matchingPrice1);
+									$("#matched-price").text("$"+(matchingPrice1 - (matchingPrice2 - matchingPrice1)*0.1).toFixed(2));
+								} else if (matchingRetailer2 == "homedepot") {
+									console.log("homedepot");
+									
+									$("#matched-price").text("$"+(matchingPrice1*0.9).toFixed(2));
+								} else if (matchingRetailer2 == "sears") {
+									console.log("sears");
+									$("#matched-price").text("$"+(matchingPrice1*0.9).toFixed(2));
+								} else if (matchingRetailer2 == "visions") {
+									console.log("visions");
+									$("#matched-price").text("$"+(matchingPrice1 - (matchingPrice2 - matchingPrice1)*0.15).toFixed(2));
+								} else {
+									$("#matched-price").text("$"+matchingPrice1);
+								}
+
+								$("#high-retailer-link").attr("href", matchingLink2);
+								$("#high-retailer-img").attr("src", matchingImgSrc2);
+							} else {
+								console.log("default");
+								$("#matched-price").text(elePrice);
+								$("#high-retailer-link").attr("href", eleLink);
+								$("#high-retailer-img").attr("src", eleImgSrc);
+							}
+						
+						
+						$(elepriceInfo).insertBefore(".print-prompt");
+
+						$(".select-to-price:not(.checked)")
+							.css("cursor","not-allowed")
+							.removeClass("checked");
 						$(".select-to-price").css("cursor","not-allowed");
 						$(".select-to-price.checked").css("cursor", "pointer");
 						$(this).find("i")
 							.toggleClass("fa-circle-thin")
 							.toggleClass("fa-check-circle");
 
-						console.log("jkl2");
 						break;
 
-					default: 
+					default:
+						if($(this).hasClass("checked")) {
+							$(this).removeClass("checked");
+						} 
 						$(".select-to-price").css("cursor","not-allowed");
 				} 
 				
