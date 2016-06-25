@@ -275,6 +275,50 @@
     text-align: center;
 }
 
+/* new */
+.print-prompt .modal-dialog {
+    color: #404040;
+}
+
+.print-prompt .modal-dialog .modal-header, .modal-disclaimer {
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.print-prompt .modal-dialog .modal-header .modal-title {
+    color: #5c5c5c;
+    line-height: 65px;
+}
+
+.print-prompt .modal-dialog .modal-header .modal-logo {
+    float: left;
+    max-width: 100px;
+    max-height: 65px;
+}
+
+.print-prompt .modal-dialog .modal-contents {
+    text-align: left;
+    font-weight: bold;
+}
+
+.print-prompt .modal-dialog .modal-contents .col-lg-9>p,.print-prompt .modal-dialog .modal-contents .col-lg-9>div {
+    line-height: 50px;
+}
+
+.print-prompt .modal-dialog .modal-contents .col-lg-9zz>p,.print-prompt .modal-dialog .modal-contents .col-lg-9>div {
+    line-height: 50px;
+}
+
+.modal-disclaimer {
+    text-align: left;
+    padding-top: 10px;
+}
+
+.modal-disclaimer p {
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+
 .result-print {
     background-color: #699a33;
     color: #fff;
