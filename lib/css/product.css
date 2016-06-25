@@ -340,7 +340,7 @@ table tbody tr .select-prod-price{font-size: 1.2rem; font-weight: 700; line-heig
 .review-title-content .customer-rate{line-height: 1;margin-top: -5px;}
 .review-title-content .customer-btn{padding-right:0;}
 .review-title-content .write-review-btn{background-color: #699a33; font-size: 1rem;width:195px; color:#fff;text-align:center; line-height: 52px; border-radius: 0;}
-.review-title-content{padding:0; height:65px; line-height: 65px; color:#699a33; overflow: hidden;}
+.review-title-content{padding:0; height:65px; line-height: 65px; color:#699a33;}
 .review-title-content li:last-child{float: right;}
 .review-title-content .rating-location{margin-left: 5rem;}
 .write-review-btn:hover, .write-review-btn:focus, .write-review-btn.focus, .result-print:hover, .result-print:focus, .result-print.focus{text-align: center; color:#fff;}
