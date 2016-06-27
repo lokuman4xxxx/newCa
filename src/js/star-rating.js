@@ -571,7 +571,10 @@
 
 $("#input-write").rating({
 	hoverOnClear: false,
+	step: 1,
 	theme: 'krajee-fa',
+	showCaption: false,
+	stars: 5
 });
 
 $('input[data-star-id]').rating({
