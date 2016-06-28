@@ -1,0 +1,25 @@
+.aboutus {
+
+	.aboutus--box {
+		margin-top: 20px;
+		padding: 20px 30px 15px;
+		background: #fff;
+		box-shadow: 0 0 2px 2px rgba(0, 0, 0, .1);
+
+		.aboutus--box__title {
+			padding: 50px;
+			color: #699a33;
+
+			&.intro {
+				padding: 80px 50px;
+			}
+		}
+
+		.aboutus--box__content {
+		font-size: 20px;
+		line-height: 1.3;
+		}
+		
+	}
+}
+

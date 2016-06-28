@@ -1,664 +1,123 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-	<title>Project</title>
-	<meta name="description" content="">
-	<meta name="keywords" content="">
+	<meta charset="UTF-8">
+	<title>kiwinano</title>
+	<link href="https://cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 	<link href="lib/css/bootstrap.min.css" rel="stylesheet">
-	<link href="lib/css/font-awesome.css" rel="stylesheet">
-	<!--<link href="dist/css/all.min.css?v=1154641d07" rel="stylesheet">-->
 	<link href="lib/css/base.css" rel="stylesheet">
-	<link href="lib/css/product.css" rel="stylesheet">
+	<link href="dist/css/all.min.css?v=25c0fb5d8c" rel="stylesheet">
+	<link href="lib/css/header.min.css" rel="stylesheet">
 </head>
 
 <body>
-	<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#loginModal">login</button>
-	<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-		<div class="modal-dialog login-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header login-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-				</div>
-				<div class="modal-body login-body">
-					<div class="login-container clearfix">
-						<div class="col-lg-12 account-content">
-							<form id="regForm" class="col-lg-6 account-left" method="POST" role="form">
-								<h4 class="input-group-title">New user? Sign up here!</h4>
-								<div class="form-group kiwi-input-group">
-									<input required id="regName" type="text" name="name" value="" class="form-control" placeholder="Name" aria-describedby="basic-addon2">
+	<div class="header-background">
+		<div class="container ">
+			<header class="">
+				<div class="row">
+					<div class="col-md-2 col-lg-2 kiwi-logo">logo</div>
+					<div class="col-md-10 col-lg-10 hearder-right">
+						<div class="row btn-group dropdown-top col-md-12 col-lg-12">
+							<div class="">
+								<div class="col-lg-12 btn-group" role="group" aria-label="...">
+									<div class="btn-group" role="group">
+										<button type="button" class="btn dropdown-toggle kiwi-btn dropdown-btn-left" data-toggle="dropdown" aria-haspopup="true"
+											aria-expanded="false">
+                                        DEPARTMENT
+                                    </button>
+										<ul class="dropdown-menu" role="menu">
+											<jsp:include page="/system/getDepartment.ohtml" />
+										</ul>
+									</div>
+									<button type="button" class="btn kiwi-btn">PRICE MATCH</button>
+									<button type="button" class="btn kiwi-btn">FLYERS</button>
+									<form id="myForm" name="myForm" class="f-sign" onsubmit="return false">
+										<div class="col-lg-4">
+											<div class="input-group kiwi-nav-facade">
+												<!-- /btn-group -->
+												<input type="text" class="form-control kiwi-border-white" aria-label="..." placeholder="Search here" name="kw" id="search_input">
+												<span class="input-group-btn"><button class="btn btn-search-submit kiwi-border-white fa fa-search" type="button" id="seaBtn"></button></span>
+											</div>
+											<!-- /input-group -->
+										</div>
+									</form>
+									<button type="button" class="btn kiwi-btn search-right">History</button>
+									<button type="button" class="btn kiwi-btn search-right">Wishlist</button>
+									<button type="button" class="btn kiwi-btn float-right search-right" data-toggle="modal" data-target="#loginModal">Login</button>
+
+
 								</div>
-								<div class="form-group kiwi-input-group">
-									<input required id="regEmail" type="email" name="email" value="" class="form-control" placeholder="Email" aria-describedby="basic-addon2">
-								</div>
-								<div class="form-group kiwi-input-group">
-									<input required id="regPassword" type="password" name="password" class="form-control" placeholder="Password" aria-describedby="basic-addon2">
-								</div>
-								<div class="form-group kiwi-input-group">
-									<input required id="regPasswordConfirm" type="password" name="password_confirmation" class="form-control" placeholder="Confirm Password"
-										aria-describedby="basic-addon2">
-								</div>
-								<div class="form-group kiwi-input-group">
-									<input type="checkbox" name="terms" required><a href="">&nbsp;I agree the terms and conditions</a>
-								</div>
-								<button type="submit" class="btn btn-primary btn-block account-signup">CREATE ACCOUNT</button>
-							</form>
-							<form id="loginForm" class="col-lg-6 account-right" method="POST" role="form">
-								<h4 class="input-group-title">Already a user? Login here!</h4>
-								<div class="form-group kiwi-input-group">
-									<input required id="logEmail" type="email" name="email" class="form-control" placeholder="Email address" aria-describedby="basic-addon2">
-								</div>
-								<div class="form-group kiwi-input-group">
-									<input required id="logPassword" type="password" name="password" class="form-control" placeholder="Password" aria-describedby="basic-addon2">
-								</div>
-								<button type="submit" class="btn btn-primary btn-block account-login">LOGIN</button>
-							</form>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
+				<div class="clearfix visible-xs-block"></div>
+			</header>
 		</div>
 	</div>
 
-	<div class="dropdown cate-item">
-		<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
-			aria-expanded="true">
-	Dropdown
-	<span class="caret"></span>
-  </button>
-		<ul class="dropdown-menu" role="menu">
-			<li data-submenu-id="category1-1">
-				<a href="#">Electronics</a>
-				<div id="category1-1" class="popover">
-					<dl class="popover-title clearfix">
-						<dt>
-							<h3>Electornics</h3>
-						</dt>
-						<dd>
-							<a href=""><img src="http://placehold.it/100x100" alt="">Jewellery & accessories</a>
-						</dd>
-						<dd>
-							<a href=""><img src="http://placehold.it/100x100" alt="">Home Care & Organization </a>
-						</dd>
-						<dd>
-							<a href=""><img src="http://placehold.it/100x100" alt="">category2-3</a>
-						</dd>
-						<dd>
-							<a href=""><img src="http://placehold.it/100x100" alt="">category2-4</a>
-						</dd>
-						<dd>
-							<a href=""><img src="http://placehold.it/100x100" alt="">category2-5</a>
-						</dd>
-					</dl>
-					<dl class="popover-content clearfix">
-						<dt>
-							<h3>Adttional Categories</h3>
-						</dt>
-						<dd><a href="">category2-6</a></dd>
-						<dd><a href="">category2-7</a></dd>
-						<dd><a href="">category2-8</a></dd>
-						<dd><a href="">category2-9</a></dd>
-						<dd><a href="">category2-10</a></dd>
-						<dd><a href="">category2-11</a></dd>
-						<dd><a href="">category2-12</a></dd>
-						<dd><a href="">category2-13</a></dd>
-						<dd><a href="">category2-14</a></dd>
-					</dl>
+	<main class="container aboutus">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="aboutus--box clearfix">
+					<h2 class="aboutus--box__title pull-left">About Us</h2>
+					<p class="aboutus--box__content">Kiwinano is a Price Match service site that provides its users with the latest retail information about electronic and
+						digital products, while getting you the lowest price match available. Kiwinano has been constantly growing and developing
+						since its launch in 2014. From the beginning, our goal at Kiwinano has been to focus on providing the most precise
+						information on product price matching amongst the largest Canadian electronic product retailers. Our role at Kiwinano,
+						is to connect our users with different merchants by offering constant updates on products and finding the lowest price
+						match available, all while providing them to our users within one location.
+					</p>
+					<p class="aboutus--box__content">Any users visiting Kiwinano can find product price matches covering over 50 categories. Our product price matches focus
+						on, but are not limited to, Consoles, Computers, Televisions, Cameras, and Home Appliances</p>
 				</div>
-			</li>
-			<li data-submenu-id="category1-2">
-				<a href="#">Clothing</a>
-				<div id="category1-2" class="popover">
-					<dl class="popover-title clearfix">
-						<dt>
-							<h3>Clothing</h3>
-						</dt>
-						<dd>
-							<a href=""><img src="http://placehold.it/100x100" alt="">Jewellery & accessories</a>
-						</dd>
-						<dd>
-							<a href=""><img src="http://placehold.it/100x100" alt="">Home Care & Organization </a>
-						</dd>
-						<dd>
-							<a href=""><img src="http://placehold.it/100x100" alt="">category2-3</a>
-						</dd>
-						<dd>
-							<a href=""><img src="http://placehold.it/100x100" alt="">category2-4</a>
-						</dd>
-						<dd>
-							<a href=""><img src="http://placehold.it/100x100" alt="">category2-5</a>
-						</dd>
-					</dl>
-					<dl class="popover-content clearfix">
-						<dt>
-							<h3>Adttional Categories</h3>
-						</dt>
-						<dd><a href="">category2-6</a></dd>
-						<dd><a href="">category2-7</a></dd>
-						<dd><a href="">category2-8</a></dd>
-						<dd><a href="">category2-9</a></dd>
-						<dd><a href="">category2-10</a></dd>
-						<dd><a href="">category2-11</a></dd>
-						<dd><a href="">category2-12</a></dd>
-						<dd><a href="">category2-13</a></dd>
-						<dd><a href="">category2-14</a></dd>
-					</dl>
+				<div class="aboutus--box clearfix">
+					<h2 class="aboutus--box__title intro pull-left">Introduction</h2>
+					<p class="aboutus--box__content"><strong>What is the "Price Match Policy"?</strong></p>
+					<p class="aboutus--box__content">Many stores within North America use price matching as a practice, wherein a retailer agrees to sell a product for a
+						lower price in order to price match the pricing of their competitors. However, though many retailers have this "lowest
+						price guarantee", they cannot always keep track of the pricing of all the products from other retailers. Kiwinano is
+						a price comparison and price match service site that works based on the Price Match Policy in Canada. We offer our
+						users the ability to view, compare, and price match information gathered from some of the largest electronic product
+						retailers. It is through Kiwinano that users can instantly find and price match any type of electronic product, within
+						over 50 categories, including Consoles, Computers, Televisions, Cameras, and Home Appliances. It is through the use
+						of Kiwinano that you can find the right product at the lowest price.
+					</p>
+					<p class="aboutus--box__content">We at Kiwinano are here to offer you the best and the newest price match information available. You can browse all available
+						price matches for a product, as listed by all electronic retailers, making us a one-stop overview for your price matching
+						needs. We take it upon ourselves to find the best price matches out there for you, saving you not only money, but also
+						the time it takes to price match on your own. By putting all the information into one simple and easy-to-use location,
+						we make shopping comfortable and fun for everyone. Print out our "Price Match Receipt" and show it to the retailer
+						of your choosing in order for you to get the product with its lowest price match right away.</p>
 				</div>
-			</li>
-			<li data-submenu-id="submenu-duoc-langur">
-				<a href="#">Jewellery</a>
-				<div id="submenu-duoc-langur" class="popover">
-					<dl class="popover-title clearfix">
-						<dt>
-							<h3>Jewellery</h3>
-						</dt>
-						<dd>
-							<a href=""><img src="http://placehold.it/100x100" alt="">Jewellery & accessories</a>
-						</dd>
-						<dd>
-							<a href=""><img src="http://placehold.it/100x100" alt="">Home Care & Organization </a>
-						</dd>
-						<dd>
-							<a href=""><img src="http://placehold.it/100x100" alt="">category2-3</a>
-						</dd>
-						<dd>
-							<a href=""><img src="http://placehold.it/100x100" alt="">category2-4</a>
-						</dd>
-						<dd>
-							<a href=""><img src="http://placehold.it/100x100" alt="">category2-5</a>
-						</dd>
-					</dl>
-					<dl class="popover-content clearfix">
-						<dt>
-							<h3>Adttional Categories</h3>
-						</dt>
-						<dd><a href="">category2-6</a></dd>
-						<dd><a href="">category2-7</a></dd>
-						<dd><a href="">category2-8</a></dd>
-						<dd><a href="">category2-9</a></dd>
-						<dd><a href="">category2-10</a></dd>
-						<dd><a href="">category2-11</a></dd>
-						<dd><a href="">category2-12</a></dd>
-						<dd><a href="">category2-13</a></dd>
-						<dd><a href="">category2-14</a></dd>
-					</dl>
-				</div>
-			</li>
-			<li data-submenu-id="submenu-pygmy">
-				<a href="#">Body & Makeup</a>
-				<div id="submenu-pygmy" class="popover">
-					<dl class="popover-title clearfix">
-						<dt>
-							<h3>Body & Makeup</h3>
-						</dt>
-						<dd>
-							<a href=""><img src="http://placehold.it/100x100" alt="">Jewellery & accessories</a>
-						</dd>
-						<dd>
-							<a href=""><img src="http://placehold.it/100x100" alt="">Home Care & Organization </a>
-						</dd>
-						<dd>
-							<a href=""><img src="http://placehold.it/100x100" alt="">category2-3</a>
-						</dd>
-						<dd>
-							<a href=""><img src="http://placehold.it/100x100" alt="">category2-4</a>
-						</dd>
-						<dd>
-							<a href=""><img src="http://placehold.it/100x100" alt="">category2-5</a>
-						</dd>
-					</dl>
-					<dl class="popover-content clearfix">
-						<dt>
-							<h3>Adttional Categories</h3>
-						</dt>
-						<dd><a href="">category2-6</a></dd>
-						<dd><a href="">category2-7</a></dd>
-						<dd><a href="">category2-8</a></dd>
-						<dd><a href="">category2-9</a></dd>
-						<dd><a href="">category2-10</a></dd>
-						<dd><a href="">category2-11</a></dd>
-						<dd><a href="">category2-12</a></dd>
-						<dd><a href="">category2-13</a></dd>
-						<dd><a href="">category2-14</a></dd>
-					</dl>
-				</div>
-			</li>
-			<li data-submenu-id="submenu-tamarin">
-				<a href="#">Food</a>
-				<div id="submenu-tamarin" class="popover">
-					<dl class="popover-title clearfix">
-						<dt>
-							<h3>Food</h3>
-						</dt>
-						<dd>
-							<a href=""><img src="http://placehold.it/100x100" alt="">Jewellery & accessories</a>
-						</dd>
-						<dd>
-							<a href=""><img src="http://placehold.it/100x100" alt="">Home Care & Organization </a>
-						</dd>
-						<dd>
-							<a href=""><img src="http://placehold.it/100x100" alt="">category2-3</a>
-						</dd>
-						<dd>
-							<a href=""><img src="http://placehold.it/100x100" alt="">category2-4</a>
-						</dd>
-						<dd>
-							<a href=""><img src="http://placehold.it/100x100" alt="">category2-5</a>
-						</dd>
-					</dl>
-					<dl class="popover-content clearfix">
-						<dt>
-							<h3>Adttional Categories</h3>
-						</dt>
-						<dd><a href="">category2-6</a></dd>
-						<dd><a href="">category2-7</a></dd>
-						<dd><a href="">category2-8</a></dd>
-						<dd><a href="">category2-9</a></dd>
-						<dd><a href="">category2-10</a></dd>
-						<dd><a href="">category2-11</a></dd>
-						<dd><a href="">category2-12</a></dd>
-						<dd><a href="">category2-13</a></dd>
-						<dd><a href="">category2-14</a></dd>
-					</dl>
-				</div>
-			</li>
-			<li data-submenu-id="submenu-monk">
-				<a href="#">Furniture & Home</a>
-				<div id="submenu-monk" class="popover">
-					<dl class="popover-title clearfix">
-						<dt>
-							<h3>Furniture & Home</h3>
-						</dt>
-						<dd>
-							<a href=""><img src="http://placehold.it/100x100" alt="">Jewellery & accessories</a>
-						</dd>
-						<dd>
-							<a href=""><img src="http://placehold.it/100x100" alt="">Home Care & Organization </a>
-						</dd>
-						<dd>
-							<a href=""><img src="http://placehold.it/100x100" alt="">category2-3</a>
-						</dd>
-						<dd>
-							<a href=""><img src="http://placehold.it/100x100" alt="">category2-4</a>
-						</dd>
-						<dd>
-							<a href=""><img src="http://placehold.it/100x100" alt="">category2-5</a>
-						</dd>
-					</dl>
-					<dl class="popover-content clearfix">
-						<dt>
-							<h3>Adttional Categories</h3>
-						</dt>
-						<dd><a href="">category2-6</a></dd>
-						<dd><a href="">category2-7</a></dd>
-						<dd><a href="">category2-8</a></dd>
-						<dd><a href="">category2-9</a></dd>
-						<dd><a href="">category2-10</a></dd>
-						<dd><a href="">category2-11</a></dd>
-						<dd><a href="">category2-12</a></dd>
-						<dd><a href="">category2-13</a></dd>
-						<dd><a href="">category2-14</a></dd>
-					</dl>
-				</div>
-			</li>
-			<li data-submenu-id="submenu-gabon">
-				<a href="#">Automotive</a>
-				<div id="submenu-gabon" class="popover">
-					<dl class="popover-title clearfix">
-						<dt>
-							<h3>Automotive</h3>
-						</dt>
-						<dd>
-							<a href=""><img src="http://placehold.it/100x100" alt="">Jewellery & accessories</a>
-						</dd>
-						<dd>
-							<a href=""><img src="http://placehold.it/100x100" alt="">Home Care & Organization </a>
-						</dd>
-						<dd>
-							<a href=""><img src="http://placehold.it/100x100" alt="">category2-3</a>
-						</dd>
-						<dd>
-							<a href=""><img src="http://placehold.it/100x100" alt="">category2-4</a>
-						</dd>
-						<dd>
-							<a href=""><img src="http://placehold.it/100x100" alt="">category2-5</a>
-						</dd>
-					</dl>
-					<dl class="popover-content clearfix">
-						<dt>
-							<h3>Adttional Categories</h3>
-						</dt>
-						<dd><a href="">category2-6</a></dd>
-						<dd><a href="">category2-7</a></dd>
-						<dd><a href="">category2-8</a></dd>
-						<dd><a href="">category2-9</a></dd>
-						<dd><a href="">category2-10</a></dd>
-						<dd><a href="">category2-11</a></dd>
-						<dd><a href="">category2-12</a></dd>
-						<dd><a href="">category2-13</a></dd>
-						<dd><a href="">category2-14</a></dd>
-					</dl>
-				</div>
-			</li>
-			<li data-submenu-id="submenu-grivet">
-				<a href="#">Pet & Supplies</a>
-				<div id="submenu-grivet" class="popover">
-					<dl class="popover-title clearfix">
-						<dt>
-							<h3>Pet & Supplies</h3>
-						</dt>
-						<dd>
-							<a href=""><img src="http://placehold.it/100x100" alt="">Jewellery & accessories</a>
-						</dd>
-						<dd>
-							<a href=""><img src="http://placehold.it/100x100" alt="">Home Care & Organization </a>
-						</dd>
-						<dd>
-							<a href=""><img src="http://placehold.it/100x100" alt="">category2-3</a>
-						</dd>
-						<dd>
-							<a href=""><img src="http://placehold.it/100x100" alt="">category2-4</a>
-						</dd>
-						<dd>
-							<a href=""><img src="http://placehold.it/100x100" alt="">category2-5</a>
-						</dd>
-					</dl>
-					<dl class="popover-content clearfix">
-						<dt>
-							<h3>Adttional Categories</h3>
-						</dt>
-						<dd><a href="">category2-6</a></dd>
-						<dd><a href="">category2-7</a></dd>
-						<dd><a href="">category2-8</a></dd>
-						<dd><a href="">category2-9</a></dd>
-						<dd><a href="">category2-10</a></dd>
-						<dd><a href="">category2-11</a></dd>
-						<dd><a href="">category2-12</a></dd>
-						<dd><a href="">category2-13</a></dd>
-						<dd><a href="">category2-14</a></dd>
-					</dl>
-				</div>
-			</li>
-			<li data-submenu-id="submenu-red-leaf">
-				<a href="#">Stationery</a>
-				<div id="submenu-red-leaf" class="popover">
-					<dl class="popover-title clearfix">
-						<dt>
-							<h3>Stationery</h3>
-						</dt>
-						<dd>
-							<a href=""><img src="http://placehold.it/100x100" alt="">Jewellery & accessories</a>
-						</dd>
-						<dd>
-							<a href=""><img src="http://placehold.it/100x100" alt="">Home Care & Organization </a>
-						</dd>
-						<dd>
-							<a href=""><img src="http://placehold.it/100x100" alt="">category2-3</a>
-						</dd>
-						<dd>
-							<a href=""><img src="http://placehold.it/100x100" alt="">category2-4</a>
-						</dd>
-						<dd>
-							<a href=""><img src="http://placehold.it/100x100" alt="">category2-5</a>
-						</dd>
-					</dl>
-					<dl class="popover-content clearfix">
-						<dt>
-							<h3>Adttional Categories</h3>
-						</dt>
-						<dd><a href="">category2-6</a></dd>
-						<dd><a href="">category2-7</a></dd>
-						<dd><a href="">category2-8</a></dd>
-						<dd><a href="">category2-9</a></dd>
-						<dd><a href="">category2-10</a></dd>
-						<dd><a href="">category2-11</a></dd>
-						<dd><a href="">category2-12</a></dd>
-						<dd><a href="">category2-13</a></dd>
-						<dd><a href="">category2-14</a></dd>
-					</dl>
-				</div>
-			</li>
-			<li data-submenu-id="submenu-king-colobus">
-				<a href="#">Baby & Toys</a>
-				<div id="submenu-king-colobus" class="popover">
-					<dl class="popover-title clearfix">
-						<dt>
-							<h3>Baby & Toys</h3>
-						</dt>
-						<dd>
-							<a href=""><img src="http://placehold.it/100x100" alt="">Jewellery & accessories</a>
-						</dd>
-						<dd>
-							<a href=""><img src="http://placehold.it/100x100" alt="">Home Care & Organization </a>
-						</dd>
-						<dd>
-							<a href=""><img src="http://placehold.it/100x100" alt="">category2-3</a>
-						</dd>
-						<dd>
-							<a href=""><img src="http://placehold.it/100x100" alt="">category2-4</a>
-						</dd>
-						<dd>
-							<a href=""><img src="http://placehold.it/100x100" alt="">category2-5</a>
-						</dd>
-					</dl>
-					<dl class="popover-content clearfix">
-						<dt>
-							<h3>Adttional Categories</h3>
-						</dt>
-						<dd><a href="">category2-6</a></dd>
-						<dd><a href="">category2-7</a></dd>
-						<dd><a href="">category2-8</a></dd>
-						<dd><a href="">category2-9</a></dd>
-						<dd><a href="">category2-10</a></dd>
-						<dd><a href="">category2-11</a></dd>
-						<dd><a href="">category2-12</a></dd>
-						<dd><a href="">category2-13</a></dd>
-						<dd><a href="">category2-14</a></dd>
-					</dl>
-				</div>
-			</li>
-		</ul>
-
-		<input data-star-id="input-read" type="text" class="rating" value="4.3" data-min="0" data-max="5" data-step="0.1" data-readonly="true"
-			data-show-clear="false">
-		<div class="container">
-			<ol class="col-lg-12 breadcrumb price-guide review-title-content">
-				<li class="col-lg-3 customer-title" style="position:relative;">Customer review
-					<div id="review-form-container" class="popover" style="display:block;">
-						<form id="review-form" class="clearfix">
-							<div class="col-lg-6">
-								<div class="form-group">
-									<input type="text" name="title" id="review-title" class="form-control" placeholder="Title here" required>
-								</div>
-								<div class="form-group clearfix">
-									<!-- login ? showname : inputname -->
-									<input type="text" name="name" id="review-name" class="form-control input-inline" placeholder="Name" required>
-									<!---->
-									<input type="text" name="location" id="review-location" class="form-control input-inline" placeholder="Location" disabled>
-								</div>
-							</div>
-							<div class="col-lg-offset-2 col-lg-4">
-								<table>
-									<tr>
-										<td><label for="input-write" class="control-label">Overall Rating</label></td>
-										<td><input id="input-write" type="text" name="mark" class="rating" data-min="0" data-max="5" value="5" data-show-clear="false" required></td>
-									</tr>
-								</table>
-							</div>
-							<div class="col-lg-12">
-								<textarea name="comments" id="review-comment" rows="5" class="form-control" placeholder="Comment here" required></textarea>
-							</div>
-							<div class="review-submit pull-right">
-								<a id="review-cancel">Cancel</a>
-								<button type="submit" id="review-submit">Submit</button>
-							</div> 
-						</form>
+				<div class="aboutus--box clearfix">
+					<div class="col-lg-6">
+						<h2 class="aboutus--box__title pull-left">Contact us</h2>
+						<p class="aboutus--box__content">Address:
+							<br> 203-1 70E Beaver Creek Rd, Richmond Hill, Ontario, Canada L4B 3B2
+						</p>
+						<p class="aboutus--box__content"><i class="fa fa-phone" aria-hidden="true"></i> 416-800-9186
+						</p>
+						<p class="aboutus--box__content"><i class="fa fa-fax" aria-hidden="true"></i> 416-800-7853
+						</p>
+						<p class="aboutus--box__content"><i class="fa fa-envelope" aria-hidden="true"></i> info@kiwinano.com;
+						</p>
 					</div>
-				</li>
-				<li class="col-lg-offset-2 col-lg-4 customer-rate">
-					<div class="rating-container theme-krajee-fa rating-md rating-animate rating-disabled">
-						<div class="caption"><span class="label">0</span></div>
-						<div class="rating"><span class="empty-stars"><span class="star"><i class="glyphicon glyphicon-star-empty"></i></span><span class="star"><i class="glyphicon glyphicon-star-empty"></i></span>
-							<span class="star"><i class="glyphicon glyphicon-star-empty"></i></span><span class="star"><i class="glyphicon glyphicon-star-empty"></i></span>
-							<span class="star"><i class="glyphicon glyphicon-star-empty"></i></span>
-							</span><span class="filled-stars" style="width: 0%;"><span class="star"><i class="glyphicon glyphicon-star"></i></span>
-							<span class="star"><i class="glyphicon glyphicon-star"></i></span><span class="star"><i class="glyphicon glyphicon-star"></i></span>
-							<span class="star"><i class="glyphicon glyphicon-star"></i></span><span class="star"><i class="glyphicon glyphicon-star"></i></span></span>
-						</div><input data-star-id="input-read" type="text" class="rating hide rating-loading" value="0.0" data-min="0" data-max="5"
-							data-step="0.1" data-readonly="true" data-show-clear="false" readonly="readonly"></div>
-				</li>
-				<li class="col-lg-3 customer-btn">
-					<button href="" class="btn float-right write-review-btn">WRITE REVIEW</button>
-				</li>
-			</ol>
-			<div class="col-lg-4 match-result-left">
-				<ul class="nav nav-tabs" role="tablist">
-					<li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Match Result</a></li>
-					<li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">History Price</a></li>
-				</ul>
-				<div class="tab-content">
-					<div role="tabpanel" class="tab-pane active" id="home">
-						<p class="select-prompt">Please select two retailers to price march</p>
-						<div class="matched-info display-none">
-							<p class="matched-price"><span>Matched Prices:</span>
-								<br><b id="matched-price"></b>
-								<br><span>from<a id="high-retailer-link" href=""><img id="high-retailer-img" src="" alt=""></a></span></p>
-							<div class="result-prod-container clearfix">
-								<div class="col-lg-7 result-prod-left">
-									<a class="result-prod-img"><img src="http://placehold.it/165x100"></a>
-								</div>
-								<div class="col-lg-5 result-prod-right">Lenovo IdeaPad 15.6" Laptop - Black (Intel Core i3-5020U/500GB HDD/8GB RAM/Windows 10) - EnglishLenovo IdeaPad 15.6"
-									Laptop - Black (Intel Core i3-5020U/500GB HDD/8GB RAM/Windows 10) - English</div>
-							</div>
-							<div class="print-prompt">
-								<p>You can print this receipt to get the best matched price in the store.</p>
-								<button class="btn result-print" data-toggle="modal" data-target=".bs-example-modal-lg">PRINT HERE</button>
-								<div id="printable" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myMiddleModalLabel">
-									<div class="modal-dialog modal-lg">
-										<div class="modal-content">
-											<div class="modal-header">
-												<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-												<img class="modal-logo" src="http://localhost:8080/comparePriceWeb/images/img/logo.png">
-												<h3 class="modal-title" id="myModalLabel">Your best price advise online</h3>
-											</div>
-											<div class="modal-header modal-contents">
-												<h3></h3>
-												<div class="col-lg-9">
-
-													<p class="modal-matched-price">Matched Price is <span></span></p>
-													<p class="modal-matched-retailer">Get Matched Price From</p>
-												</div>
-												<div class="col-lg-3"></div>
-												<div class="col-lg-offset-5 col-lg-5"><button class="btn btn-primary print">PRINT</button></div>
-											</div>
-											<div class="modal-disclaimer">
-												<h3>Disclaimer of Warranties and Limitation of Liability</h3>
-												<p>The site is provided by kiwinano on an "as is" and on an "as available" basis.</p>
-												<p>To the fullest extent permitted by applicable law, kiwinano makes no representations or warranties of any kind,
-													express or implied, as to the operation of the site or the information, content, graphics, links, materials,
-													products, or services included on the site, or their accuracy, reliability, completeness or timeliness.</p>
-												<p>In addition, third parties provide some of the material on the site; to the maximum extent permitted by applicable
-													law, kiwinano shall not be responsible for any such third party material. You expressly agree that your use
-													of the site or any transaction resulting thereof is solely at your own risk.</p>
-												<p>
-													For full terms and conditions, visit <a href="http://www.kiwinano.ca">Kiwinano.ca</a></p>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
+					<div class="col-lg-6" style="height:196px;">
+						<div class="aboutus__map">map</div>
 					</div>
-					<div role="tabpanel" class="tab-pane" id="profile">...</div>
+					<div class="col-lg-6">
+						<p class="aboutus--box__content"><strong>Find Us On Social Media</strong></p>
+					</div>
+					<div class="col-lg-6">
+						<p class="aboutus--box__content"><strong>Looking for business opportunities</strong></p>
+						<p>Please contact simona.t@kiwinano.com</p>
+					</div>
 				</div>
 			</div>
-			<div class="col-lg-6 tab-select-container">
-				<table class="table">
-					<thead>
-						<tr class="tab-select-title">
-							<th class="select-prod-price">Retailer</th>
-							<th class="select-prod-price">Product Price</th>
-							<th class="select-prod-price">Select to Price Match</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr class="price-match">
-							<td>
-								<a href="#"><img src="http://placehold.it/111x46" alt="bestbuy"></a>
-							</td>
-							<td class="select-prod-price">$<span>599.99</span></td>
-							<td class="select-prod-price select-to-price">Price Match <i class="fa fa-circle-thin"></i></td>
-						</tr>
-						<tr class="price-match">
-							<td>
-								<a href="#"><img src="http://placehold.it/110x46" alt="Staples"></a>
-							</td>
-							<td class="select-prod-price">$<span>599.99</span></td>
-							<td class="select-prod-price select-to-price">Price Match <i class="fa fa-circle-thin"></i></td>
-						</tr>
-						<tr class="price-match">
-							<td><img src="http://placehold.it/110x46" alt="1"></td>
-							<td class="select-prod-price">$<span>599.99</span></td>
-							<td class="select-prod-price select-to-price">Price Match <i class="fa fa-circle-thin"></i></td>
-						</tr>
-						<tr class="price-match">
-							<td><img src="http://placehold.it/110x46" alt="2"></td>
-							<td class="select-prod-price">$<span>599.99</span></td>
-							<td class="select-prod-price select-to-price">Price Match <i class="fa fa-circle-thin"></i></td>
-						</tr>
-						<tr class="price-match">
-							<td>
-								<a href="#"><img src="http://placehold.it/110x46" alt="Lowest"></a>
-							</td>
-							<td class="select-prod-price price-matched">$<span>499.99</span></td>
-							<td class="select-prod-price select-to-price">Price Match <i class="fa fa-circle-thin"></i></td>
-						</tr>
-						<tr class="price-match">
-							<td><img src="http://placehold.it/110x46" alt="3"></td>
-							<td class="select-prod-price">$<span>599.99</span></td>
-							<td class="select-prod-price select-to-price">Price Match <i class="fa fa-circle-thin"></i></td>
-						</tr>
-						<tr class="price-match">
-							<td><img src="http://placehold.it/110x46" alt="3"></td>
-							<td class="select-prod-price">$<span>599.99</span></td>
-							<td class="select-prod-price select-to-price">Price Match <i class="fa fa-circle-thin"></i></td>
-						</tr>
-						<tr>
-							<td><img src="http://placehold.it/110x46" alt="4"></td>
-							<td class="select-prod-price">$<span>599.99</span></td>
-							<td class="select-prod-price no-price">Not Available</td>
-						</tr>
-						<tr>
-							<td><img src="http://placehold.it/110x46" alt="5"></td>
-							<td class="select-prod-price">$<span>599.99</span></td>
-							<td class="select-prod-price no-price">Not Available</td>
-						</tr>
-						<tr>
-							<td><img src="http://placehold.it/110x46" alt="6"></td>
-							<td class="select-prod-price">$<span>599.99</span></td>
-							<td class="select-prod-price no-price">Not Available</td>
-						</tr>
-						<tr>
-							<td><img src="http://placehold.it/110x46" alt="7"></td>
-							<td class="select-prod-price">$<span>599.99</span></td>
-							<td class="select-prod-price no-price">Not Available</td>
-						</tr>
-
-					</tbody>
-				</table>
-			</div>
-
 		</div>
-
-
-		<script src="lib/js/jquery-1.12.4.min.js"></script>
-		<script src="lib/js/bootstrap.min.js"></script>
-		<script src="dist/js/all.min.js?v=36cd762b62"></script>
-
-
+	</main>
 </body>
 
 </html>
