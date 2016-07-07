@@ -121,16 +121,16 @@
 		padding-left: 10px;
 
 		&.affix {
-			top: 0;
+			top: 0 !important;
 		}
 
 		&.affix-top {
-			position: absolute;
-			top: 111px;
+			position: absolute !important;
+			top: 111px !important;
 		}
 
 		&.affix-bottom {
-			position: absolute;
+			position: absolute !important;
 		}
 		
 		li {
