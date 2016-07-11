@@ -1,6 +1,5 @@
 $dropdown-link-color: #555;
 $dropdown-link-color-hover: #699a33;
-
 .popover {
 	padding: 0 0 1px 0;
 	background-color: #ebebeb;
@@ -9,72 +8,62 @@ $dropdown-link-color-hover: #699a33;
 .popover-title {
 	background-color: #fff;
 	padding: 10px 0 10px 15px;
-
 	dt {
 		h3 {
 			margin-top: 10px;
 			margin-left: 10px;
 		}
 	}
-
 	dd {
 		float: left;
 		width: 20%;
 		text-align: center;
-
 		a {
 			display: inline-block;
 			color: $dropdown-link-color;
-
 			&:hover {
 				color: $dropdown-link-color-hover;
 				text-decoration: none;
 			}
-
 			img {
 				display: block;
-				margin:0 auto;
+				margin: 0 auto;
 				width: 100px;
 				height: 100px;
 			}
 		}
 	}
 }
+
 .popover {
 	min-width: 640px;
 	max-width: 100%;
 }
-.popover-content{
-		background-color: #fff;
-		box-sizing: border-box;
-		padding: 10px 10px 17px;
-		margin-bottom: 0px;
-		border-bottom-left-radius: 6px;
-		border-bottom-right-radius: 6px;
 
-
-		dt {
-			font-weight: 400;
-
-			h3 {
-				margin-top: 10px;
-				margin-left: 15px;
-			}
-
+.popover-content {
+	background-color: #fff;
+	box-sizing: border-box;
+	padding: 10px 10px 17px;
+	margin-bottom: 0px;
+	border-bottom-left-radius: 6px;
+	border-bottom-right-radius: 6px;
+	dt {
+		font-weight: 400;
+		h3 {
+			margin-top: 10px;
+			margin-left: 15px;
 		}
-
-		dd {
-			float: left;
-			width: 50%;
-			font-weight: 100;
-			padding: 8px 15px;
-
-			a {
-				color: $dropdown-link-color;
-
-				&:hover {
-					color: $dropdown-link-color-hover;
-				}
+	}
+	dd {
+		float: left;
+		width: 50%;
+		font-weight: 100;
+		padding: 8px 15px;
+		a {
+			color: $dropdown-link-color;
+			&:hover {
+				color: $dropdown-link-color-hover;
 			}
 		}
+	}
 }
