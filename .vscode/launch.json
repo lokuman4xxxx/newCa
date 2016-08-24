@@ -2,17 +2,20 @@
 	"version": "0.2.0",
 	"configurations": [
 		{
-			"name": "启动扩展",
-			"type": "extensionHost",
+			"name": "Launch localhost with sourcemaps",
+			"type": "chrome",
 			"request": "launch",
-			"runtimeExecutable": "${execPath}",
-			"args": [
-				"--extensionDevelopmentPath=${workspaceRoot}"
-			],
-			"stopOnEntry": false,
+			"url": "http://localhost:8081/newCa/index.html",
 			"sourceMaps": true,
-			"outDir": "${workspaceRoot}/out",
-			"preLaunchTask": "npm"
+			"webRoot": "E:/xampp/htdocs/newCa"
+		},
+		{
+			"name": "Attach with sourcemaps",
+			"type": "chrome",
+			"request": "attach",
+			"port": 9222,
+			"sourceMaps": true,
+			"webRoot": "${workspaceRoot}"
 		}
 	]
 }
